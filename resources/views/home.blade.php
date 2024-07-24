@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>RSJ SOEHARTO HEERDJAN</title>
+    <title>Klinik dr. Agung Mas Agung P.S</title>
     {{-- <title>Grad School HTML5 Template</title> --}}
 
     <!-- Favicon icon -->
@@ -46,7 +46,7 @@ https://templatemo.com/tm-557-grad-school
     <!--header-->
     <header class="main-header clearfix" role="header">
         <div class="logo">
-            <a href="#"><em>RSJ</em> Shoeharto</a>
+            <a href="#"><em>Klinik</em> dr. Agung Mas Agung P.S</a>
         </div>
         <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
         <nav id="menu" class="main-nav" role="navigation">
