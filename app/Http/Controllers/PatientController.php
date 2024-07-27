@@ -45,18 +45,20 @@ class PatientController extends Controller
                 ->store('/bpjs');
         }
 
-        $patien_id = Patient::insertGetId($validated);
+        Patient::create($validated);
 
-        // create queue nomber
-        $date = date('Y-m-d');
-        $queue = Queue::where('created_at', 'LIKE', "%$date%")->count() + 1;
+        // $patien_id = Patient::insertGetId($validated);
 
-        Queue::create([
-            'patient_id' => $patien_id,
-            'queue_number' => $queue,
-            'queue_active' => 1,
-            'created_at' => now(),
-        ]);
+        // // create queue nomber
+        // $date = date('Y-m-d');
+        // $queue = Queue::where('created_at', 'LIKE', "%$date%")->count() + 1;
+
+        // Queue::create([
+        //     'patient_id' => $patien_id,
+        //     'queue_number' => $queue,
+        //     'queue_active' => 1,
+        //     'created_at' => now(),
+        // ]);
 
         return redirect('/dashboard')->with(
             'success',
@@ -69,23 +71,10 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
+        // dd($patient);
         return view('patient.show', [
-            'patient' => User::join(
-                'patients',
-                'users.id',
-                '=',
-                'patients.user_id'
-            )
-                ->join('roles', 'users.role_id', '=', 'roles.id')
-                ->join('queues', 'patients.id', '=', 'queues.patient_id')
-                ->select(
-                    'users.*',
-                    'patients.*',
-                    'roles.role_name as role_name',
-                    'queues.queue_number as queue_number'
-                )
-                ->where('patients.id', $patient->id)
-                ->first(),
+            'patient' => $patient,
+            'queque' => Queue::where('patient_id', $patient->id)->first(),
         ]);
     }
 

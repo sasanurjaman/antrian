@@ -24,12 +24,45 @@
     <div class="col-12 col-sm-6 col-md-4">
         <div class="info-box">
             <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cash-register"></i></span>
-
             <div class="info-box-content">
                 <span class="info-box-text">Antrian Saya</span>
+
+                @if ($queque)
                 <span class="info-box-number">
-                    {{ $patient->queue_number }}
+                    {{ $queque->queue_number}}
                 </span>
+                @else
+                <span class="info-box-number">
+                    <a href="#" data-toggle="modal" data-target="#staticBackdrop">Ambil Antrian</a>
+                </span>
+                @endif
+
+                {{-- modal --}}
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Ambil Antrian</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="{{ route('queue.store')}}" method="POST">
+                                @csrf
+                                <input type="hidden" value="{{$patient->id}}" name="patient_id">
+                                <div class="modal-body">
+                                    Apakah Mau Ambil Antrian Pasien?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                                    <button type="submit" class="btn btn-primary">Ya</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!-- /.info-box-content -->
         </div>
