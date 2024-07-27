@@ -40,7 +40,19 @@ class QueueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // create queue nomber
+        $date = date('Y-m-d');
+        $queue = Queue::where('created_at', 'LIKE', "%$date%")->count() + 1;
+
+        Queue::create([
+            'patient_id' => $request->patient_id,
+            'queue_number' => $queue,
+            'queue_active' => 1,
+        ]);
+
+        return redirect()
+            ->route('patient.show', $request->patient_id)
+            ->with('success', 'pengambilan nomor antrian berhasil!');
     }
 
     /**

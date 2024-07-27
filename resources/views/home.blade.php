@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Klinik dr. Agung Mas Agung P.S</title>
+    <title>Klinik dr. Agung</title>
     {{-- <title>Grad School HTML5 Template</title> --}}
 
     <!-- Favicon icon -->
@@ -46,7 +46,7 @@ https://templatemo.com/tm-557-grad-school
     <!--header-->
     <header class="main-header clearfix" role="header">
         <div class="logo">
-            <a href="#"><em>Klinik</em> dr. Agung Mas Agung P.S</a>
+            <a href="#"><em>Klinik</em> dr. Agung</a>
         </div>
         <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
         <nav id="menu" class="main-nav" role="navigation">
@@ -73,7 +73,7 @@ https://templatemo.com/tm-557-grad-school
             <div class="row">
                 <div class="col-md-12 col-xs-12">
                     <div class="continer centerIt">
-                        <h4 class="text-center"><em>Antrian Pasien</em> Dr. Soeharto Heerdjan</h4>
+                        <h4 class="text-center"><em>Antrian Pasien</em> Klinik dr. Agung</h4>
                         <div class="row">
                             <div class="col-sm-4"></div>
                             <div class="col-sm-8">
@@ -81,12 +81,12 @@ https://templatemo.com/tm-557-grad-school
 
                                     <div class="days">
                                         <div class="queue_count text-white"></div>
-                                        <span>Jumlah Antrian</span>
+                                        <span class="text-body">Jumlah Antrian</span>
                                     </div>
 
                                     <div class="hours">
                                         <div class="queue_latest text-white"></div>
-                                        <span>Antrian Saat ini</span>
+                                        <span class="text-body">Antrian Saat ini</span>
                                     </div>
 
                                 </div>
@@ -104,7 +104,7 @@ https://templatemo.com/tm-557-grad-school
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-heading">
-                        <h2>Sekilas Tentang RSJ Soeharto</h2>
+                        <h2>Sekilas Tentang Klinik dr. Agung</h2>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -127,7 +127,7 @@ https://templatemo.com/tm-557-grad-school
                                             Jenderal (Gouverneur General) tertanggal 14 April 1867, namun pembangunannya
                                             baru dimulai pada tahun 1876.</p>
                                         <p>Tahun 1973 berubah nama jadi RSJ Jakarta, Tahun 1993 menjadi RSJ Pusat
-                                            Jakarta, dan Tahun 2003 jadi RSJ Soeharto Heerdjan</p>
+                                            Jakarta, dan Tahun 2003 jadi Klinik dr. Agung Heerdjan</p>
                                     </div>
                                 </div>
                             </article>
