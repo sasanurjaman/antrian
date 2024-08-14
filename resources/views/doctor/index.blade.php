@@ -35,32 +35,37 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>No</th>
                         <th>Photo</th>
                         <th>Nama</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Alamat</th>
                         <th>Spesialisasi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($doctors as $doctor)
                     <tr data-widget="expandable-table" aria-expanded="false">
-                        <td><a href="{{ route('doctor.show', $doctor->id)}}" class="badge badge-info"><i
-                                    class="far fa-eye"></i></a></td>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>
+                            <a href="{{ route('doctor.show', $doctor->id)}}" class="badge badge-info">
+                                <i class="far fa-eye"></i>
+                            </a>
+
+                            <form action="{{ route('doctor.destroy', $doctor->id)}}" class="d-inline" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="border-0 badge badge-danger"
+                                    onclick="return confirm('Yakin ingin menghapus data {{ $doctor->doctor_name}} ?')"><i
+                                        class="fas fa-trash"></i></button>
+                            </form>
+                        </td>
                         <td>
                             @if ($doctor->doctor_image)
-                            <img height="50px" class="img-circle elevation-2"
+                            <img height="30px" class="img-circle elevation-2"
                                 src="{{ asset('storage/'. $doctor->doctor_image)}}" alt="{{ $doctor->doctor_name}}">
                             @else
-                            <img height="50px" class="img-circle elevation-2" src="{{ asset('/dist/img/user.png')}}"
+                            <img height="30px" class="img-circle elevation-2" src="{{ asset('/dist/img/user.png')}}"
                                 alt="{{ $doctor->doctor_name}}">
                             @endif
                         </td>
                         <td>{{ $doctor->doctor_name}}</td>
-                        <td>{{ $doctor->doctor_gender}}</td>
-                        <td>{{ $doctor->doctor_address}}</td>
                         <td>{{ $doctor->doctor_specialization}}</td>
                     </tr>
                     @endforeach

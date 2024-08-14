@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class DoctorController extends Controller
 {
@@ -112,7 +113,21 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        //
+        if ($doctor->doctor_image) {
+            if (Storage::exists($doctor->doctor_image)) {
+                Storage::delete($doctor->doctor_image);
+            }
+        }
+
+        $doctor->delete();
+
+        $user = User::where('id', $doctor->user_id)->first();
+
+        if ($user) {
+            $user->delete();
+        }
+
+        return redirect()->route('doctor.index');
     }
     /**
      * add new user doctor in storage
