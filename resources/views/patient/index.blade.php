@@ -39,12 +39,8 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>No</th>
                         <th>Photo</th>
                         <th>Nama</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Status</th>
-                        <th>Alamat</th>
                         <th>BPJS</th>
                     </tr>
                 </thead>
@@ -53,21 +49,17 @@
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td><a href="{{ route('patient.show', $patient->id)}}" class="badge badge-info"><i
                                     class="far fa-eye"></i></a></td>
-                        <td>{{ $loop->iteration }}</td>
                         <td>
                             @if ($patient->patient_image)
-                            <img height="50px" class="img-circle elevation-2"
+                            <img height="30px" class="img-circle elevation-2"
                                 src="{{ asset('storage/' . $patient->patient_image)}}"
                                 alt="{{ $patient->patient_name}}">
                             @else
-                            <img class="profile-user-img img-fluid img-circle" src="/dist/img/user.png"
+                            <img height="30px" class="img-circle elevation-2" src="/dist/img/user.png"
                                 alt="{{ $patient->patient_name }}">
                             @endif
                         </td>
                         <td>{{ $patient->patient_name}}</td>
-                        <td>{{ $patient->patient_gender}}</td>
-                        <td>{{ $patient->patient_status}}</td>
-                        <td>{{ $patient->patient_address}}</td>
                         <td>
                             @if ( $patient->patient_is_bpjs == 1)
                             Ya

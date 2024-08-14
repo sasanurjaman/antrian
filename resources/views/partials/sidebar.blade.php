@@ -25,7 +25,7 @@
                 <!-- Add icons to the links using the .nav-icon class
         with font-awesome or any other icon font library -->
 
-                @if (Auth::user()->role_id == 1)
+                {{-- @if (Auth::user()->role_id == 1)
                 <li class="nav-item">
                     <a href="{{ route('dashboard') }}" class="nav-link">
                         <i class="fa-th nav-icon fas fa-tachometer-alt"></i>
@@ -34,7 +34,7 @@
                         </p>
                     </a>
                 </li>
-                @endif
+                @endif --}}
 
                 @if (Auth::user()->role_id == 1)
                 <li class="nav-item">

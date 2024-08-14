@@ -28,7 +28,7 @@ class DashboardController extends Controller
                 $patient = Patient::where('user_id', Auth::user()->id)->first();
                 return redirect()->route('patient.show', $patient->id);
             } else {
-                return view('dashboard');
+                return redirect()->route('patient.index');
             }
         }
     }
