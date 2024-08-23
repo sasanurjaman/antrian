@@ -103,66 +103,23 @@ https://templatemo.com/tm-557-grad-school
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="section-heading">
-                        <h2>Sekilas Tentang Klinik dr. Agung</h2>
-                    </div>
-                </div>
-                <div class="col-md-12">
                     <div id='tabs'>
-                        <ul>
-                            <li><a href='#tabs-1'>Sejarah Singkat</a></li>
-                            <li><a href='#tabs-2'>Visi Misi</a></li>
-                            <li><a href='#tabs-3'>Nilai/Value</a></li>
-                        </ul>
                         <section class='tabs-content'>
-                            <article id='tabs-1'>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <img src="assets/images/choose-us-image-01.png" alt="">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4>Sejarah Singkat</h4>
-                                        <p>Didirikan berdasarkan Keputusan Kerajaan Belanda (Koninklijkbesluit)
-                                            tertanggal 30 Desember 1865 No.100. dan berdasarkan Keputusan Gubernur
-                                            Jenderal (Gouverneur General) tertanggal 14 April 1867, namun pembangunannya
-                                            baru dimulai pada tahun 1876.</p>
-                                        <p>Tahun 1973 berubah nama jadi RSJ Jakarta, Tahun 1993 menjadi RSJ Pusat
-                                            Jakarta, dan Tahun 2003 jadi Klinik dr. Agung Heerdjan</p>
-                                    </div>
-                                </div>
-                            </article>
-                            <article id='tabs-2'>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <img src="assets/images/choose-us-image-02.png" alt="">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4 class="p-0 m-1">Visi</h4>
-                                        <p>Masyarakat Sehat Yang Mandiri Dan Berkeadilan</p>
-                                        <h4 class="p-0 m-1">Misi</h4>
-                                        <p>Menyediakan kegiatan promotif, preventif, kuratif, dan rehabilitatif yang
-                                            profesional dan bermutu berbasis layanan neuropsikiatri.</p>
-                                        <p>Meningkatkan Kualitas Sumber Daya Manusia yang Kompeten dan Profesional.</p>
-                                        <p>Meningkatkan sarana prasarana untuk mendukung terwujudnya layanan-layanan
-                                            unggulan dan pusat rujukan layanan neuropsikiatri.</p>
-                                        <p>Menyediakan Pendidikan Kesehatan Jiwa sesuai Standar RS Pendidikan.</p>
-                                        <p>Menyediakan Penelitian dan pelatihan yang berbasis layanan neuropsikiatri.
-                                        </p>
-                                    </div>
-                                </div>
-                            </article>
                             <article id='tabs-3'>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <img src="assets/images/choose-us-image-03.png" alt="">
                                     </div>
                                     <div class="col-md-6">
-                                        <h4>Nilai/Value</h4>
-                                        <p>Responsibility</p>
-                                        <p>Sincerely</p>
-                                        <p>Justice</p>
-                                        <p>Social</p>
-                                        <p>Humanity</p>
+                                        <h4>Layanan Kami</h4>
+                                        <p>Pelayanan Umum</p>
+                                        <p>Khitan</p>
+                                        <p>Bedah MInor</p>
+                                        <p>Peawatan Luka</p>
+                                        <p>Pelayan Ibu dan Anak</p>
+                                        <p>Pelayan KB</p>
+                                        <p>Pemeriksaan Laboratorium</p>
+                                        <p>Pelayanan Nebulizer/Uap</p>
                                     </div>
                                 </div>
                             </article>
@@ -172,10 +129,6 @@ https://templatemo.com/tm-557-grad-school
             </div>
         </div>
     </section>
-
-
-
-
 
     <footer>
         <div class="container">
