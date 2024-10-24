@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(15)->create();
 
         \App\Models\User::factory()->create([
             'name' => 'Test User',
@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             DoctorSeeder::class,
             ScheduleSeeder::class,
             QueueSeeder::class,
+            MidwifeSeeder::class,
         ]);
     }
 }

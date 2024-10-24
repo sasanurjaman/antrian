@@ -15,19 +15,14 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-
-        if (Auth::user()->role_id == 2) {
-            return view('schedule.index', [
-                'schedules' => Schedule::where('doctor_id', $doctor->id)
-                    ->latest()
-                    ->get(),
-                'doctor' => $doctor,
-            ]);
+        if (Auth::user()->role_id == 1 || Auth::user()->role_id == 3) {
+            return redirect()->route('doctor.index');
         } else {
             return view('schedule.index', [
-                // 'schedules' => Schedule::all(),
-                'doctors' => Doctor::all(),
+                'schedules' => Schedule::where(
+                    'user_id',
+                    Auth::user()->id
+                )->get(),
             ]);
         }
     }
@@ -46,12 +41,15 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         Schedule::create([
-            'doctor_id' => $request->doctor_id,
+            'user_id' => $request->user_id,
             'schedule_name' => $request->schedule_name,
             'schedule_date' => $request->schedule_date,
         ]);
 
-        return redirect('/schedule');
+        return redirect('/schedule')->with(
+            'success',
+            'Berhasil Menambahkan Jadwal!'
+        );
     }
 
     /**
@@ -76,12 +74,15 @@ class ScheduleController extends Controller
     public function update(Request $request, Schedule $schedule)
     {
         $schedule->update([
-            'doctor_id' => $request->doctor_id,
+            'user_id' => $request->user_id,
             'schedule_name' => $request->schedule_name,
             'schedule_date' => $request->schedule_date,
         ]);
 
-        return redirect('/schedule');
+        return redirect('/schedule')->with(
+            'success',
+            'Berhasil Merubah Jadwal!'
+        );
     }
 
     /**
@@ -91,6 +92,9 @@ class ScheduleController extends Controller
     {
         $schedule->delete();
 
-        return redirect('/schedule');
+        return redirect('/schedule')->with(
+            'success',
+            'Berhasil Menghapus Jadwal!'
+        );
     }
 }

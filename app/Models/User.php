@@ -35,4 +35,35 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * relationship one to one user, role
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+    /**
+     * relationship one to one user, midwife
+     */
+    public function midwife()
+    {
+        return $this->hasOne(Midwife::class, 'user_id');
+    }
+
+    /**
+     * relationship one to many user, schedule
+     */
+    public function schedule()
+    {
+        return $this->hasMany(Schedule::class, 'user_id');
+    }
+
+    /**
+     * relationship one to many user, doctor
+     */
+    public function doctor()
+    {
+        return $this->hasMany(Doctor::class, 'user_id');
+    }
 }

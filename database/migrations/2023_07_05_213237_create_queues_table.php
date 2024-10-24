@@ -13,7 +13,8 @@ return new class extends Migration {
         Schema::create('queues', function (Blueprint $table) {
             $table->id();
             $table->foreignId('patient_id');
-            $table->integer('queue_number');
+            $table->string('queue_number');
+            $table->string('queue_type')->nullable();
             $table->integer('queue_active');
             $table->timestamps();
         });

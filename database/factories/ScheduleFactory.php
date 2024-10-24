@@ -17,7 +17,7 @@ class ScheduleFactory extends Factory
     public function definition(): array
     {
         return [
-            'doctor_id' => mt_rand(1, 4),
+            'user_id' => mt_rand(1, 9),
             'schedule_name' => fake()->sentence(3),
             'schedule_date' => fake()->dateTime('Y-m-d  H:i:s'),
         ];

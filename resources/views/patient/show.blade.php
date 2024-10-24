@@ -52,11 +52,20 @@
                                 @csrf
                                 <input type="hidden" value="{{$patient->id}}" name="patient_id">
                                 <div class="modal-body">
-                                    Apakah Mau Ambil Antrian Pasien?
+                                    Pilih Jenis Layanan
+                                    <div class="btn-group btn-group-toggle ml-5" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="type" id="option1" checked value="A"> Dokter
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="type" id="option2" value="B">Bidan
+                                        </label>
+                                    </div>
                                 </div>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-                                    <button type="submit" class="btn btn-primary">Ya</button>
+                                    <button type="submit" class="btn btn-primary">Ambil</button>
                                 </div>
                             </form>
                         </div>
@@ -118,13 +127,11 @@
                     @endif
                 </div>
 
-                <h3 class="profile-username text-center">{{ $patient->name}}</h3>
-
-                <p class="text-muted text-center">{{ $patient->role_name}}</p>
+                <h3 class="profile-username text-center">{{ Auth::user()->name}}</h3>
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                        <b>Email</b> <a class="float-right">{{ $patient->email}}</a>
+                        <b>Email</b> <a class="float-right">{{ Auth::user()->email}}</a>
                     </li>
                     <li class="list-group-item">
                         <b>Nama</b> <a class="float-right">{{ $patient->patient_name}}</a>

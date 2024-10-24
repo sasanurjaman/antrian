@@ -11,4 +11,12 @@ class Patient extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [''];
+
+    /**
+     * relationship one to one queque, patient
+     */
+    public function queque()
+    {
+        return $this->hasMany(Queue::class, 'patien_id');
+    }
 }

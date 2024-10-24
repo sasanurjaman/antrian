@@ -42,11 +42,15 @@ class QueueController extends Controller
     {
         // create queue nomber
         $date = date('Y-m-d');
-        $queue = Queue::where('created_at', 'LIKE', "%$date%")->count() + 1;
+        $queue =
+            Queue::where('created_at', 'LIKE', "%$date%")
+                ->where('queue_number', 'LIKE', "%$request->type%")
+                ->count() + 1;
 
         Queue::create([
             'patient_id' => $request->patient_id,
-            'queue_number' => $queue,
+            'queue_number' => $request->type . $queue,
+            'queue_type' => $request->type,
             'queue_active' => 1,
         ]);
 

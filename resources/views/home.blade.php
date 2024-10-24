@@ -81,12 +81,12 @@ https://templatemo.com/tm-557-grad-school
 
                                     <div class="days">
                                         <div class="queue_count text-white"></div>
-                                        <span class="text-body">Jumlah Antrian</span>
+                                        <span class="text-body">Antrian Bidan</span>
                                     </div>
 
                                     <div class="hours">
                                         <div class="queue_latest text-white"></div>
-                                        <span class="text-body">Antrian Saat ini</span>
+                                        <span class="text-body">Antrian Dokter</span>
                                     </div>
 
                                 </div>
