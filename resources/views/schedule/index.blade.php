@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-@section('title', 'Jadwal Doktor')
+@section('title', 'Jadwal Praktek')
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -12,7 +12,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard')}}">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Jadwal Doktor</li>
+                    <li class="breadcrumb-item active">Jadwal Praktek</li>
                 </ol>
             </div>
         </div>
@@ -24,38 +24,30 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h4 class="d-inline">Jadwal Doktor</h4>
+            <h4 class="d-inline">Jadwal Praktek</h4>
 
-            @if (auth()->user()->role_id == 2)
             <div class="card-tools">
                 <button class="btn btn-primary modal-create"><i class="fas fa-plus"></i> Tambah Jadwal</button>
             </div>
-            @endif
+
         </div>
-        @if (auth()->user()->role_id == 2)
         <div class="card-body table-responsive">
             <table id="example1" class="table table-bordered table-hover">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>No</th>
                         <th>Nama Kegiatan</th>
                         <th>Waktu Kegiatan</th>
-                        @if (auth()->user()->role_id == 2)
-                        <th>#</th>
-                        @endif
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($schedules as $schedule)
                     <tr data-widget="expandable-table" aria-expanded="false">
-                        <th>{{ $loop->iteration }}</th>
-                        <td>{{ $schedule->schedule_name}}</td>
-                        <td>{{ $schedule->schedule_date}}</td>
-                        @if (auth()->user()->role_id == 2)
                         <td>
                             <button class="badge badge-warning border-0" data-toggle="tooltip" data-placement="top"
                                 title="Edit"
-                                onclick="edit({{ $doctor->id}}, '{{$schedule->schedule_name}}', '{{ $schedule->schedule_date}}')"><i
+                                onclick="edit({{ $schedule->id}}, '{{$schedule->schedule_name}}', '{{ $schedule->schedule_date}}')"><i
                                     class="fas fa-edit"></i></button>
                             <form action="{{ route('schedule.destroy', $schedule->id) }}" method="POST"
                                 class="d-inline">
@@ -66,49 +58,15 @@
                                     title="delete"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
-                        @endif
+                        <th>{{ $loop->iteration }}</th>
+                        <td>{{ $schedule->schedule_name}}</td>
+                        <td>{{ $schedule->schedule_date}}</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        @else
-        <div class="card-body table-responsive">
-            <table id="example1" class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>No</th>
-                        <th>Photo</th>
-                        <th>Nama Doktor</th>
-                        <th>Spesialisasi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($doctors as $doctor)
-                    <tr data-widget="expandable-table" aria-expanded="false">
-                        <td>
-                            <a href="{{ route('doctor.show', $doctor->id)}}" class="badge badge-info"><i
-                                    class="far fa-eye"></i></a>
-                        </td>
-                        <td>
-                            @if ($doctor->doctor_image)
-                            <img height="40px" class="img-circle elevation-2"
-                                src="{{ asset('storage/' . $doctor->doctor_image)}}" alt="{{ $doctor->doctor_name}}">
-                            @else
-                            <img height="40px" class="img-circle elevation-2" src="{{ asset('/dist/img/user.png') }}"
-                                alt="{{ $doctor->doctor_name}}">
-                            @endif
-                        </td>
-                        <td>{{ $doctor->doctor_name}}</td>
-                        <td>{{ $doctor->doctor_gender}}</td>
-                        <td>{{ $doctor->doctor_specialization}}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        @endif
+
         <!-- /.card-body -->
         <div class="card-footer">
             Footer
@@ -119,7 +77,6 @@
 </section>
 <!-- /.content -->
 
-@if (auth()->user()->role_id == 2)
 <div class="modal fade" id="modal-schedule">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -133,7 +90,7 @@
                 <div class="modal-body">
                     @csrf
                     <input type="hidden" name="_method" class="method">
-                    <input type="hidden" value="{{ $doctor->id }}" name="doctor_id">
+                    <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                     <div class="form-group">
                         <label for="schedule_name">Nama Kegiatan</label>
                         <input required type="text" name="schedule_name" id="schedule_name"
@@ -169,7 +126,6 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-@endif
 <!-- /.modal -->
 
 @endsection
@@ -210,5 +166,14 @@
         $('#schedule_date').val(schedule_date);
         $('#modal-schedule').modal('show');
     }
+
+    // toat success seasion
+    @if (session()->has('success'))
+    $(document).Toasts('create', {
+    class: 'bg-succes',
+    title: 'Berhasil!',
+    body: '{{ session('success')}}'
+    })
+    @endif
 </script>
 @endpush

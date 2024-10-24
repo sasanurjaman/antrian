@@ -113,12 +113,16 @@ class PatientController extends Controller
         $data = [];
         $date = date('Y-m-d');
         $queue_latest = Queue::where('created_at', 'LIKE', "%$date%")
+            ->where('queue_type', 'LIKE', 'A')
             ->where('queue_active', 1)
             ->first();
         $data['queue_latest'] = $queue_latest->queue_number;
 
-        $queue_count = Queue::where('created_at', 'LIKE', "%$date%")->count();
-        $data['queue_count'] = $queue_count;
+        $queue_count = Queue::where('created_at', 'LIKE', "%$date%")
+            ->where('queue_type', 'LIKE', 'B')
+            ->where('queue_active', 1)
+            ->first();
+        $data['queue_count'] = $queue_count->queue_number;
         return $data;
     }
 }

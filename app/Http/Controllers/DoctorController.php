@@ -45,7 +45,7 @@ class DoctorController extends Controller
         Doctor::create($validateData);
 
         return redirect()
-            ->route('doctor.index')
+            ->route('dashboard')
             ->with(
                 'success',
                 "Data dokter $request->doctor_name berhasih disimpan!"
@@ -58,17 +58,7 @@ class DoctorController extends Controller
     public function show(Doctor $doctor)
     {
         return view('doctor.show', [
-            'doctor' => User::join(
-                'doctors',
-                'users.id',
-                '=',
-                'doctors.user_id'
-            )
-                ->join('roles', 'users.role_id', '=', 'roles.id')
-                ->select('users.*', 'doctors.*', 'roles.role_name as role_name')
-                ->where('doctors.id', $doctor->id)
-                ->first(),
-            'schedules' => Schedule::where('doctor_id', $doctor->id)->get(),
+            'doctor' => $doctor->load('user', 'user.schedule', 'user.role'),
         ]);
     }
 
@@ -98,6 +88,11 @@ class DoctorController extends Controller
         ]);
 
         if ($request->file('doctor_image')) {
+            if ($doctor->doctor_image) {
+                if (Storage::exists($doctor->doctor_image)) {
+                    Storage::delete($doctor->doctor_image);
+                }
+            }
             $validateData['doctor_image'] = $request
                 ->file('doctor_image')
                 ->store('/doctor');

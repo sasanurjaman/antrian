@@ -26,6 +26,10 @@ class RoleSeeder extends Seeder
                 'role_name' => 'pasien',
                 'created_at' => now(),
             ],
+            [
+                'role_name' => 'midwife',
+                'created_at' => now(),
+            ],
         ]);
     }
 }

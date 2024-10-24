@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MidwifeController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\QueueController;
 use App\Http\Controllers\ScheduleController;
@@ -39,4 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('schedule', ScheduleController::class);
     Route::post('/add', [DoctorController::class, 'add'])->name('add');
     Route::resource('queue', QueueController::class);
+    Route::resource('midwife', MidwifeController::class);
+    Route::post('/addmid', [MidwifeController::class, 'addmid'])->name(
+        'addmid'
+    );
 });

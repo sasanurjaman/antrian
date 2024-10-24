@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-@section('title', 'Daftar Dokter')
+@section('title', 'Daftar Bidan')
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -10,7 +10,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard')}}">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Daftar Dokter</li>
+                    <li class="breadcrumb-item active">Daftar Bidan</li>
                 </ol>
             </div>
         </div>
@@ -22,12 +22,12 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="d-inline">Daftar Dokter</h3>
+            <h3 class="d-inline">Daftar Bidan</h3>
 
             <div class="card-tools">
                 <button class="btn btn-primary btn-create" href="{{ route('doctor.create')}}"><i
                         class="fas fa-plus"></i> Tambah
-                    Dokter</button>
+                    Bidan</button>
             </div>
         </div>
         <div class="card-body table-responsive">
@@ -41,34 +41,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($doctors as $doctor)
+                    @foreach ($midwives as $midwife)
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td>
-                            <a href="{{ route('doctor.show', $doctor->id)}}" class="badge badge-info">
+                            <a href="{{ route('midwife.show', $midwife->id)}}" class="badge badge-info">
                                 <i class="far fa-eye"></i>
                             </a>
 
-                            @if (Auth::user()->role_id == 1)
-                            <form action="{{ route('doctor.destroy', $doctor->id)}}" class="d-inline" method="POST">
+                            <form action="{{ route('midwife.destroy', $midwife->id)}}" class="d-inline" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="border-0 badge badge-danger"
-                                    onclick="return confirm('Yakin ingin menghapus data {{ $doctor->doctor_name}} ?')"><i
+                                    onclick="return confirm('Yakin ingin menghapus data {{ $midwife->midwife_name}} ?')"><i
                                         class="fas fa-trash"></i></button>
                             </form>
-                            @endif
                         </td>
                         <td>
-                            @if ($doctor->doctor_image)
+                            @if ($midwife->midwife_image)
                             <img height="30px" class="img-circle elevation-2"
-                                src="{{ asset('storage/'. $doctor->doctor_image)}}" alt="{{ $doctor->doctor_name}}">
+                                src="{{ asset('storage/'. $midwife->midwife_image)}}" alt="{{ $midwife->midwife_name}}">
                             @else
                             <img height="30px" class="img-circle elevation-2" src="{{ asset('/dist/img/user.png')}}"
-                                alt="{{ $doctor->doctor_name}}">
+                                alt="{{ $midwife->midwife_name}}">
                             @endif
                         </td>
-                        <td>{{ $doctor->doctor_name}}</td>
-                        <td>{{ $doctor->doctor_specialization}}</td>
+                        <td>{{ $midwife->midwife_name}}</td>
+                        <td>{{ $midwife->midwife_specialization}}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -89,18 +87,18 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Tambah Akun Dokter</h4>
+                <h4 class="modal-title">Tambah Akun Bidan</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('add')}}" method="POST" class="modal-form">
+            <form action="{{ route('addmid')}}" method="POST" class="modal-form">
                 <div class="modal-body">
                     @csrf
-                    <input type="hidden" name="role_id" value="2">
+                    <input type="hidden" name="role_id" value="4">
                     <div class="input-group mb-3">
                         <input name="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                            value="{{ old('name')}}" placeholder="username min 8 karakter" required>
+                            value="{{ old('name')}}" placeholder="username min 4 karakter" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>

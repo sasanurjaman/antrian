@@ -10,11 +10,15 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('midwives', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('schedule_name');
-            $table->dateTime('schedule_date');
+            $table->string('midwife_name');
+            $table->enum('midwife_gender', ['Laki-laki', 'Perempuan']);
+            $table->date('midwife_brithday');
+            $table->text('midwife_address');
+            $table->string('midwife_specialization');
+            $table->string('midwife_image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -25,6 +29,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('midwives');
     }
 };
